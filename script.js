@@ -64,16 +64,15 @@ function getWinner() {
   if (winner) {
     return winner;
   } else if (board.includes("")) {
-    console.log(board.includes(""));
     return null;
   } else {
     return "T";
   }
 }
-
 function replay() {
   startGame();
   messages.textContent = "Phoo's turn!";
+  document.getElementById("board").addEventListener("click", turn);
 }
 startGame();
 render();
