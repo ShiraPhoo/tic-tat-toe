@@ -40,9 +40,11 @@ function turn(event) {
   let id = squares.findIndex(function (square) {
     return square === event.target;
   });
-  board[id] = mark;
 
-  mark = mark === "X" ? (mark = "O") : (mark = "X");
+  if (!board[id]) {
+    board[id] = mark;
+    mark = mark === "X" ? (mark = "O") : (mark = "X");
+  }
 
   win = getWinner();
   render();
@@ -75,5 +77,4 @@ function replay() {
   document.getElementById("board").addEventListener("click", turn);
 }
 startGame();
-render();
 getWinner();
